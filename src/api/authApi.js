@@ -1,5 +1,6 @@
-import { fetch } from './client';
+import fetch from './client';
 
-const authUrl = process.env.API_URL + '/register/';
+const authUrl = process.env.API_URL + '/register';
 
-export const login = ({ name, email }) => fetch({ url: authUrl, body: { name, email } });
+export const signIn = ({ name, email, client_id = process.env.CLIENT_ID }) =>
+  fetch({ url: authUrl, body: { name, email, client_id } });

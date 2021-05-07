@@ -1,23 +1,36 @@
 import { Suspense } from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { sitePaths, routesMap } from '../routeMap';
+import AuthProvider from 'providers/Auth';
+import configureStore from 'store';
+import LoginPage from 'pages/LoginPage';
+import AuthRoute from 'components/AuthRoute';
+import { sitePaths, routesMap } from 'src/routeMap';
 
+const store = configureStore();
 const history = createBrowserHistory();
 
 const App = () => (
-  <Router history={history}>
-    <Switch>
-      {routesMap.map(({ page: Page, ...route }) => (
-        <Route key={route.path} path={route.path} exact={route.exact}>
+  <ReduxProvider store={store}>
+    <AuthProvider>
+      <Router history={history}>
+        <Switch>
           <Suspense fallback="Loading...">
-            <Page />
+            <Route path={sitePaths.login}>
+              <LoginPage />
+            </Route>
+            {routesMap.map(({ page: Page, ...route }) => (
+              <AuthRoute key={route.path} path={route.path} exact={route.exact}>
+                <Page />
+              </AuthRoute>
+            ))}
           </Suspense>
-        </Route>
-      ))}
-      <Redirect from="/" to={sitePaths.posts} />
-    </Switch>
-  </Router>
+          <Redirect from="/" to={sitePaths.login} />
+        </Switch>
+      </Router>
+    </AuthProvider>
+  </ReduxProvider>
 );
 
 export default App;

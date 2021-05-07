@@ -8,11 +8,6 @@ export const sitePaths = {
 export const routesMap = [
   {
     exact: false,
-    path: sitePaths.login,
-    page: lazy(() => import('./pages/LoginPage')),
-  },
-  {
-    exact: false,
     path: sitePaths.posts,
     page: lazy(() => import('./pages/PostsPage')),
   },

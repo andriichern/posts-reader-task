@@ -1,8 +1,7 @@
 const GET = 'GET';
 const POST = 'POST';
-const JSON = 'json';
 const CONTENT_TYPE = 'Content-Type';
-const APPLICATION_JSON = 'application/json';
+const JSON_MIME = 'application/json';
 
 const buildQueryParams = params => {
   const result = new URLSearchParams();
@@ -23,7 +22,7 @@ const buildRequest = request => {
   credentials && (options.credentials = credentials);
   options.headers = {
     ...headers,
-    [CONTENT_TYPE]: APPLICATION_JSON,
+    [CONTENT_TYPE]: JSON_MIME,
   };
 
   if (body) {
