@@ -1,13 +1,19 @@
 import { lazy } from 'react';
 
-const sitePaths = {
-  home: `/`,
+export const sitePaths = {
+  login: '/login/',
+  posts: '/posts/',
 };
 
 export const routesMap = [
   {
-    exact: true,
-    path: sitePaths.home,
+    exact: false,
+    path: sitePaths.login,
+    page: lazy(() => import('./pages/LoginPage')),
+  },
+  {
+    exact: false,
+    path: sitePaths.posts,
     page: lazy(() => import('./pages/PostsPage')),
   },
 ];

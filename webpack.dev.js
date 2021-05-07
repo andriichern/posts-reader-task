@@ -10,6 +10,8 @@ module.exports = merge(commonConfig, {
   devtool: 'eval-source-map',
   plugins: [new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()],
   devServer: {
+    disableHostCheck: true,
+    historyApiFallback: true,
     overlay: true,
     port: PORT,
     publicPath: '/',

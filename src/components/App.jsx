@@ -1,19 +1,23 @@
 import { Suspense } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { routesMap } from '../routeMap';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { sitePaths, routesMap } from '../routeMap';
+
+const history = createBrowserHistory();
 
 const App = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <Switch>
-      <Suspense fallback="Loading...">
-        {routesMap.map(({ page: Page, ...route }) => (
-          <Route key={route.path} path={route.path} exact={route.exact}>
+      {routesMap.map(({ page: Page, ...route }) => (
+        <Route key={route.path} path={route.path} exact={route.exact}>
+          <Suspense fallback="Loading...">
             <Page />
-          </Route>
-        ))}
-      </Suspense>
+          </Suspense>
+        </Route>
+      ))}
+      <Redirect from="/" to={sitePaths.posts} />
     </Switch>
-  </BrowserRouter>
+  </Router>
 );
 
 export default App;
