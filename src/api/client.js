@@ -69,7 +69,7 @@ export default async request => {
       req: fetchRequest,
       response: error.res,
       status: error.status || 500,
-      message: error.message || err.toString(),
+      message: error.message || error.toString(),
     };
   }
 };

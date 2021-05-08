@@ -1,0 +1,24 @@
+@import '../../styles/functions';
+@import '../../styles/variables';
+
+.senders-list {
+  width: 350px;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: spacing(1);
+
+    background-color: var(--color-black-200);
+
+    &:not(:last-of-type) {
+      margin-bottom: spacing(1);
+    }
+  }
+}

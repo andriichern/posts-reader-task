@@ -1,0 +1,31 @@
+@import '../../styles/functions';
+
+.login-form {
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 250px);
+
+  width: 500px;
+
+  padding: spacing(1.5);
+
+  background-color: var(--color-black-300);
+
+  &-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: spacing(2);
+  }
+
+  &-label {
+    font-size: 14px;
+  }
+
+  &-input {
+    height: 24px;
+    padding: spacing(0.5);
+
+    border: 2px solid var(--color-black-400);
+    border-radius: 4px;
+  }
+}

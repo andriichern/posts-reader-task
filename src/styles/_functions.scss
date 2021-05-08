@@ -1,0 +1,16 @@
+$spacing-default: 8px;
+
+@function spacing-value($value) {
+  @return $value * $spacing-default;
+}
+
+@function spacing($k1, $k2: null, $k3: null, $k4: null) {
+  @if $k4 and $k3 and $k2 {
+    @return spacing-value($k1) spacing-value($k2) spacing-value($k3) spacing-value($k4);
+  } @else if $k3 and $k2 {
+    @return spacing-value($k1) spacing-value($k2) spacing-value($k3);
+  } @else if $k2 {
+    @return spacing-value($k1) spacing-value($k2);
+  }
+  @return spacing-value($k1);
+}
