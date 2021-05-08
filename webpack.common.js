@@ -24,6 +24,7 @@ module.exports = {
       hooks: path.resolve('src/hooks'),
       pages: path.resolve('src/pages'),
       store: path.resolve('src/store'),
+      services: path.resolve('src/services'),
       providers: path.resolve('src/providers'),
       components: path.resolve('src/components'),
     },

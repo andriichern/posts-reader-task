@@ -1,28 +1,18 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { sendersWithCount } from 'store/posts/selectors';
+import { sortOrder, lexicalSort } from 'services/sorting';
 import Badge from '../Badge';
 
-const sort = {
-  asc: (a, b) => {
-    if (a.from_name === b.from_name) {
-      return 0;
-    }
-
-    if (a.from_name < b.from_name) {
-      return -1;
-    }
-
-    return 1;
-  },
-};
+const FROM_NAME_KEY = 'from_name';
+const sortFn = lexicalSort(sortOrder.ASC, FROM_NAME_KEY);
 
 const SendersList = ({ onItemSelect }) => {
   const authors = useSelector(sendersWithCount);
 
   return (
     <ul className="senders-list">
-      {authors.sort(sort.asc).map(author => (
+      {authors.sort(sortFn).map(author => (
         <li
           key={author.from_id}
           data-id={author.from_id}
