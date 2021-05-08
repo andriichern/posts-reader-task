@@ -1,0 +1,15 @@
+@import '../../styles/functions';
+
+.post-card {
+  margin-bottom: spacing(2);
+
+  background-color: var(--color-black-200);
+
+  &-data {
+    padding: spacing(1);
+  }
+
+  &-divider {
+    border-style: solid;
+  }
+}

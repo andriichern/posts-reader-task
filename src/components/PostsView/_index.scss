@@ -1,0 +1,11 @@
+@import '../../styles/functions';
+
+.posts-view {
+  flex: 1 0 0;
+
+  height: calc(100vh - 16px);
+
+  margin-left: spacing(2);
+
+  overflow: auto;
+}

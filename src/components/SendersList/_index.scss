@@ -3,19 +3,20 @@
 
 .senders-list {
   width: 350px;
+  height: calc(100vh - 16px);
   margin: 0;
   padding: 0;
 
   list-style-type: none;
 
-  &-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  overflow: auto;
 
+  &-item {
     padding: spacing(1);
 
     background-color: var(--color-black-200);
+
+    cursor: pointer;
 
     &:not(:last-of-type) {
       margin-bottom: spacing(1);

@@ -31,6 +31,7 @@ const groupByUser = posts => {
 
   for (let i = 0; i < posts.length; ++i) {
     currentPost = posts[i];
+    currentPost.created_time = new Date(currentPost.created_time);
 
     if (groupedResult[currentPost.from_id]) {
       groupedResult[currentPost.from_id].posts.push(currentPost);

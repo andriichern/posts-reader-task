@@ -25,13 +25,13 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
-      <div className="login-form-group">
+      <div className="flex column login-form-group">
         <label htmlFor="login-name" className="login-form-label">
           Name
         </label>
         <input id="login-name" name="name" className="login-form-input" onChange={handleInput} />
       </div>
-      <div className="login-form-group">
+      <div className="flex column login-form-group">
         <label htmlFor="login-email" className="login-form-label">
           Email
         </label>
