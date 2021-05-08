@@ -8,4 +8,35 @@
   margin-left: spacing(2);
 
   overflow: auto;
+
+  &-options {
+  }
+
+  &-sorting {
+    margin-bottom: spacing(1);
+  }
+
+  &-sort-btn {
+    width: 24px;
+    height: 24px;
+    padding: spacing(0.5);
+
+    background-color: var(--color-black-200);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    &.up:before {
+      content: '\25B2';
+    }
+
+    &.down {
+      margin-left: spacing(1);
+
+      &:before {
+        content: '\25BC';
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { useState, useLayoutEffect, useCallback, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { senderPosts } from 'store/posts/selectors';
 import { sortOrder, numericSort } from 'services/sorting';
@@ -8,10 +8,33 @@ const CREATED_TIME_KEY = 'created_time';
 
 const PostsView = ({ from = '' }) => {
   const posts = useSelector(senderPosts(from));
-  const sortFn = numericSort(sortOrder.ASC, CREATED_TIME_KEY);
+  const [order, setOrder] = useState(sortOrder.ASC);
+  const sortFn = numericSort(order, CREATED_TIME_KEY);
+
+  const handleSort = useCallback(({ target }) => {
+    setOrder(target.dataset.order);
+  }, []);
+
+  useLayoutEffect(() => {
+    from && order === sortOrder.DESC && setOrder(sortOrder.ASC);
+  }, [from]);
 
   return posts.length ? (
     <div className="posts-view">
+      <div className="flex spaced posts-view-options">
+        <div className="flex posts-view-sorting">
+          <span
+            data-order={sortOrder.ASC}
+            className="flex centered posts-view-sort-btn up"
+            onClick={handleSort}
+          ></span>
+          <span
+            data-order={sortOrder.DESC}
+            className="flex centered posts-view-sort-btn down"
+            onClick={handleSort}
+          ></span>
+        </div>
+      </div>
       {posts
         .slice()
         .sort(sortFn)
