@@ -1,4 +1,4 @@
-import createActions from '../actionCreator';
+import createActions from 'store/actionCreator';
 import { signIn } from 'api/authApi';
 
 // constants

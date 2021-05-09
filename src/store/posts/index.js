@@ -1,5 +1,6 @@
-import createActions from '../actionCreator';
+import createActions from 'store/actionCreator';
 import { getPosts } from 'api/postsApi';
+import { sitePaths } from 'src/routesMap';
 
 // constants
 const FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR';
@@ -15,14 +16,14 @@ export const fetchPostsSuccess = payload => ({ type: FETCH_POSTS_SUCCESS, payloa
 export const fetchPostsError = () => ({ type: FETCH_POSTS_ERROR });
 
 //thunks
-export const fetchPosts = (page = 1) => (dispatch, getState) => {
+export const fetchPosts = (history, page = 1) => (dispatch, getState) => {
   const sl_token = getState()._auth.sl_token;
 
   return getPosts({ page, sl_token })
     .then(response => dispatch(fetchPostsSuccess(response.data)))
     .catch(error => {
       dispatch(fetchPostsError());
-      throw error;
+      history?.push(sitePaths.login);
     });
 };
 

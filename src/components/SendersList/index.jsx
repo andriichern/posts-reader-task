@@ -15,7 +15,7 @@ const SendersList = () => {
   const [filter, setFilter] = useState();
   const senders = useSelector(sendersWithCount);
 
-  return (
+  return senders.length ? (
     <section>
       <SearchBox onSearch={setFilter} />
       <ul className="senders-list">
@@ -35,7 +35,7 @@ const SendersList = () => {
           ))}
       </ul>
     </section>
-  );
+  ) : null;
 };
 
 export default memo(SendersList);

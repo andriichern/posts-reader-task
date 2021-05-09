@@ -1,16 +1,17 @@
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { fetchPosts } from 'store/posts';
 import PostsView from 'components/PostsView';
 import SendersList from 'components/SendersList';
 
 const PostsPage = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
   const { from_id } = useParams();
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(history));
   }, []);
 
   return (

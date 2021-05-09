@@ -59,6 +59,7 @@ export default async request => {
       return parsedResponse;
     } else {
       throw {
+        request: fetchRequest,
         status: response.status,
         message: response.statusText,
         response: parsedResponse,
@@ -66,8 +67,8 @@ export default async request => {
     }
   } catch (error) {
     throw {
-      req: fetchRequest,
-      response: error.res,
+      request: fetchRequest,
+      response: error.response,
       status: error.status || 500,
       message: error.message || error.toString(),
     };
