@@ -1,18 +1,22 @@
-import { useState, useLayoutEffect, useCallback } from 'react';
+import { useLayoutEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchPosts } from 'store/posts';
 import PostsView from 'components/PostsView';
 import SendersList from 'components/SendersList';
 
 const PostsPage = () => {
-  const [currentSender, setCurrentSender] = useState();
+  const dispatch = useDispatch();
+  const { from_id } = useParams();
 
-  const handlePostSelected = useCallback(({ target }) => {
-    setCurrentSender(target.dataset.id);
+  useLayoutEffect(() => {
+    dispatch(fetchPosts());
   }, []);
 
   return (
     <div className="flex">
-      <SendersList onItemSelect={handlePostSelected} />
-      {currentSender && <PostsView from={currentSender} />}
+      <SendersList />
+      {from_id && <PostsView from_id={from_id} />}
     </div>
   );
 };

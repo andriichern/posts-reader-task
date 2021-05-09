@@ -3,17 +3,12 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import configureStore from 'store';
-import navActions from 'store/navigation';
 import LoginPage from 'pages/LoginPage';
 import AuthRoute from 'components/AuthRoute';
-import { sitePaths, routesMap } from 'src/routeMap';
+import { sitePaths, routesMap } from 'src/routesMap';
 
 const store = configureStore();
 const history = createBrowserHistory();
-
-history.listen(
-  location => navActions[location.pathname] && store.dispatch(navActions[location.pathname]()),
-);
 
 const App = () => (
   <ReduxProvider store={store}>

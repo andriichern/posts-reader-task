@@ -10,4 +10,4 @@ export const sendersWithCount = createSelector(postsByUser, posts =>
   })),
 );
 
-export const senderPosts = from_id => createSelector(postsByUser, posts => posts[from_id].posts);
+export const senderPosts = from_id => createSelector(postsByUser, posts => posts[from_id]?.posts);

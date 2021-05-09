@@ -1,10 +1,11 @@
 import { memo } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useHistory } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import { sitePaths } from 'src/routeMap';
+import { sitePaths } from 'src/routesMap';
 
 const AuthRoute = ({ children, location, ...props }) => {
   const auth = useAuth();
+  const history = useHistory();
 
   return auth.sl_token ? (
     <Route {...props} location={location}>
@@ -14,7 +15,7 @@ const AuthRoute = ({ children, location, ...props }) => {
     <Redirect
       to={{
         pathname: sitePaths.login,
-        state: { from: location },
+        state: { from: history.location.pathname },
       }}
     />
   );

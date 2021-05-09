@@ -12,14 +12,22 @@
   overflow: auto;
 
   &-item {
+    &:not(:last-of-type) {
+      margin-bottom: spacing(1);
+    }
+  }
+
+  &-link {
     padding: spacing(1);
 
     background-color: var(--color-black-200);
 
-    cursor: pointer;
+    color: var(--color-black-900);
 
-    &:not(:last-of-type) {
-      margin-bottom: spacing(1);
+    text-decoration: none;
+
+    &.active {
+      background-color: var(--color-black-400);
     }
   }
 }

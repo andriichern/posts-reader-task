@@ -2,7 +2,7 @@ import { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { signInUser } from 'store/auth';
-import { sitePaths } from 'src/routeMap';
+import { sitePaths } from 'src/routesMap';
 
 const LoginForm = () => {
   const history = useHistory();
@@ -10,7 +10,10 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState({});
 
-  const from = location.state?.from || { pathname: sitePaths.posts };
+  const from =
+    location.state && location.state.from !== sitePaths.root
+      ? location.state.from
+      : { pathname: sitePaths.posts };
 
   const handleInput = ({ target }) =>
     setLoginForm(prev => ({

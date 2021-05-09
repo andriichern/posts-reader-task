@@ -6,8 +6,8 @@ import PostCard from 'components/PostCard';
 
 const CREATED_TIME_KEY = 'created_time';
 
-const PostsView = ({ from = '' }) => {
-  const posts = useSelector(senderPosts(from));
+const PostsView = ({ from_id = '' }) => {
+  const posts = useSelector(senderPosts(from_id));
   const [order, setOrder] = useState(sortOrder.ASC);
   const sortFn = numericSort(order, CREATED_TIME_KEY);
 
@@ -16,10 +16,10 @@ const PostsView = ({ from = '' }) => {
   }, []);
 
   useLayoutEffect(() => {
-    from && order === sortOrder.DESC && setOrder(sortOrder.ASC);
-  }, [from]);
+    from_id && order === sortOrder.DESC && setOrder(sortOrder.ASC);
+  }, [from_id]);
 
-  return posts.length ? (
+  return posts?.length ? (
     <div className="posts-view">
       <div className="flex spaced posts-view-options">
         <div className="flex posts-view-sorting">
