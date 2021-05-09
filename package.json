@@ -1,8 +1,9 @@
 {
   "name": "posts-reader",
   "version": "1.0.0",
-  "description": "",
-  "main": "babel.config.js",
+  "repository": {
+    "url": "https://github.com/andriichern/posts-reader-task.git"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
