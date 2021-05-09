@@ -29,13 +29,13 @@ const LoginForm = () => {
         <label htmlFor="login-name" className="login-form-label">
           Name
         </label>
-        <input id="login-name" name="name" className="login-form-input" onChange={handleInput} />
+        <input type="text" id="login-name" name="name" onChange={handleInput} />
       </div>
       <div className="flex column login-form-group">
         <label htmlFor="login-email" className="login-form-label">
           Email
         </label>
-        <input id="login-email" name="email" className="login-form-input" onChange={handleInput} />
+        <input type="text" id="login-email" name="email" onChange={handleInput} />
       </div>
       <button type="button" disabled={!(loginForm.name && loginForm.email)} onClick={handleSignIn}>
         Login

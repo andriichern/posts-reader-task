@@ -3,17 +3,16 @@
 .posts-view {
   flex: 1 0 0;
 
-  height: calc(100vh - 16px);
-
   margin-left: spacing(2);
 
-  overflow: auto;
+  &-list {
+    height: calc(100vh - 64px);
 
-  &-options {
+    overflow: auto;
   }
 
   &-sorting {
-    margin-bottom: spacing(1);
+    padding: spacing(1, 0);
   }
 
   &-sort-btn {
@@ -28,14 +27,14 @@
     cursor: pointer;
 
     &.up:before {
-      content: '\25B2';
+      content: '\25B2'; // Triangle up unicode
     }
 
     &.down {
       margin-left: spacing(1);
 
       &:before {
-        content: '\25BC';
+        content: '\25BC'; // Triangle down unicode
       }
     }
   }

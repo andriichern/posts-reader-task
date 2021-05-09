@@ -4,3 +4,13 @@ body {
   margin: 0;
   padding: spacing(1);
 }
+
+* {
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-black-400);
+  }
+}
