@@ -1,12 +1,10 @@
 import { useState, useLayoutEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import useAuth from 'hooks/useAuth';
 import { fetchPosts } from 'store/posts';
 import PostsView from 'components/PostsView';
 import SendersList from 'components/SendersList';
 
 const PostsPage = () => {
-  const auth = useAuth();
   const dispatch = useDispatch();
   const [currentSender, setCurrentSender] = useState();
 
@@ -15,7 +13,7 @@ const PostsPage = () => {
   }, []);
 
   useLayoutEffect(() => {
-    dispatch(fetchPosts(auth.data.sl_token));
+    dispatch(fetchPosts());
   }, []);
 
   return (

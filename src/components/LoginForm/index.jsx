@@ -1,12 +1,13 @@
 import { useState, memo } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import useAuth from 'hooks/useAuth';
+import { signInUser } from 'store/auth';
 import { sitePaths } from 'src/routeMap';
 
 const LoginForm = () => {
-  const auth = useAuth();
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState({});
 
   const from = location.state?.from || { pathname: sitePaths.posts };
@@ -17,11 +18,7 @@ const LoginForm = () => {
       [target.name]: target.value,
     }));
 
-  const handleSignIn = async () => {
-    await auth.signInUser(loginForm);
-
-    history.replace(from);
-  };
+  const handleSignIn = () => dispatch(signInUser(loginForm, () => history.replace(from)));
 
   return (
     <div className="login-form">
