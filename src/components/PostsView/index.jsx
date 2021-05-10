@@ -1,4 +1,5 @@
 import { useState, useLayoutEffect, useCallback, memo } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { senderPosts } from 'store/posts/selectors';
 import { sortOrder, numericSort } from 'services/sorting';
@@ -36,6 +37,10 @@ const PostsView = ({ from_id = '' }) => {
       </div>
     </section>
   ) : null;
+};
+
+PostsView.propTypes = {
+  from_id: PropTypes.string,
 };
 
 export default memo(PostsView);

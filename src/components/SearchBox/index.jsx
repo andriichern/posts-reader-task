@@ -1,4 +1,5 @@
 import { useCallback, memo } from 'react';
+import PropTypes from 'prop-types';
 import { debounce } from 'utils/fn';
 
 const HANDLER_TIMEOUT = 300;
@@ -14,6 +15,10 @@ const SearchBox = ({ onSearch = () => {} }) => {
       <input type="text" onChange={handleChange} />
     </div>
   );
+};
+
+SearchBox.propTypes = {
+  onSearch: PropTypes.func,
 };
 
 export default memo(SearchBox);

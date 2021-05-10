@@ -1,16 +1,15 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect, useHistory } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import { sitePaths } from 'src/routesMap';
 
-const AuthRoute = ({ children, location, ...props }) => {
+const AuthRoute = ({ children, ...props }) => {
   const auth = useAuth();
   const history = useHistory();
 
   return auth.sl_token ? (
-    <Route {...props} location={location}>
-      {children}
-    </Route>
+    <Route {...props}>{children}</Route>
   ) : (
     <Redirect
       to={{
@@ -19,6 +18,10 @@ const AuthRoute = ({ children, location, ...props }) => {
       }}
     />
   );
+};
+
+AuthRoute.propTypes = {
+  children: PropTypes.element,
 };
 
 export default memo(AuthRoute);
