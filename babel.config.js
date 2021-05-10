@@ -6,7 +6,6 @@ module.exports = api => {
       [
         '@babel/preset-env',
         {
-          modules: false,
           targets: {
             esmodules: true,
           },
@@ -20,7 +19,7 @@ module.exports = api => {
       ],
     ],
     plugins: [
-      !api.env('production') && 'react-refresh/babel',
+      api.env('development') && 'react-refresh/babel',
       '@babel/plugin-syntax-dynamic-import',
     ].filter(Boolean),
   };
