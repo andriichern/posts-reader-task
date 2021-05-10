@@ -11,7 +11,7 @@ const CREATED_TIME_KEY = 'created_time';
 
 const PostsView = ({ from_id = '' }) => {
   const [filter, setFilter] = useState();
-  const [order, setOrder] = useState(sortOrder.ASC);
+  const [order, setOrder] = useState(sortOrder.DESC);
   const sortFn = numericSort(order, CREATED_TIME_KEY);
 
   let posts = useSelector(senderPosts(from_id));
@@ -23,7 +23,7 @@ const PostsView = ({ from_id = '' }) => {
   }, []);
 
   useLayoutEffect(() => {
-    from_id && order === sortOrder.DESC && setOrder(sortOrder.ASC);
+    from_id && order === sortOrder.ASC && setOrder(sortOrder.DESC);
   }, [from_id]);
 
   return posts?.length ? (

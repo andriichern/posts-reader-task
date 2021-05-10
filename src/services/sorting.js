@@ -25,8 +25,8 @@ export const lexicalSort = (order = SORT_ASC, key) => (a, b) => {
 
 export const numericSort = (order = SORT_ASC, key) => (a, b) => {
   if (order === SORT_ASC) {
-    return key ? b[key] - a[key] : b - a;
+    return key ? a[key] - b[key] : a - b;
   }
 
-  return key ? a[key] - b[key] : a - b;
+  return key ? b[key] - a[key] : b - a;
 };
