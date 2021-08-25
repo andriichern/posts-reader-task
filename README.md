@@ -14,6 +14,6 @@ There are a few additional features taht are not specified in the task descripti
 ## How To
 
 - To run application, first run `build` command via `npm run` or `yarn run`. This will build application with a production configuration. Then just run `start` command. Application would be served at `http://localhost:8080`.
-- To debug project just run `dev` command. This will serve application in a dev mode at `http://localhost:8080`.
+- To debug project just run `dev` command. This will serve application in a dev mode at `http://localhost:3000`.
 
 Enjoy! :wink:
